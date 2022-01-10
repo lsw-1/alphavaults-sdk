@@ -22,7 +22,8 @@ def test_initial_deposit(
     balance1 = tokens[1].balanceOf(user)
 
     # Deposit
-    tx = vault.deposit(amount0Desired, amount1Desired, 0, 0, recipient, {"from": user})
+    tx = vault.deposit(amount0Desired, amount1Desired,
+                       0, 0, recipient, {"from": user})
     shares, amount0, amount1 = tx.return_value
 
     # Check amounts are same as inputs
@@ -70,7 +71,8 @@ def test_deposit(
     govShares = vault.balanceOf(gov)
 
     # Deposit
-    tx = vault.deposit(amount0Desired, amount1Desired, 0, 0, recipient, {"from": user})
+    tx = vault.deposit(amount0Desired, amount1Desired,
+                       0, 0, recipient, {"from": user})
     shares, amount0, amount1 = tx.return_value
 
     # Check amounts don't exceed desired
@@ -85,7 +87,8 @@ def test_deposit(
     assert amount1 == balance1 - tokens[1].balanceOf(user)
 
     # Check one amount is tight
-    assert approx(amount0) == amount0Desired or approx(amount1) == amount1Desired
+    assert approx(amount0) == amount0Desired or approx(
+        amount1) == amount1Desired
 
     # Check total amounts are in proportion
     total0After, total1After = vault.getTotalAmounts()
@@ -131,7 +134,8 @@ def test_deposit_when_vault_only_has_token0(
     total0, total1 = vault.getTotalAmounts()
 
     # Deposit
-    tx = vault.deposit(amount0Desired, amount1Desired, 0, 0, recipient, {"from": user})
+    tx = vault.deposit(amount0Desired, amount1Desired,
+                       0, 0, recipient, {"from": user})
     shares, amount0, amount1 = tx.return_value
 
     # Check amounts don't exceed desired
@@ -185,7 +189,8 @@ def test_deposit_when_vault_only_has_token1(
     total0, total1 = vault.getTotalAmounts()
 
     # Deposit
-    tx = vault.deposit(amount0Desired, amount1Desired, 0, 0, recipient, {"from": user})
+    tx = vault.deposit(amount0Desired, amount1Desired,
+                       0, 0, recipient, {"from": user})
     shares, amount0, amount1 = tx.return_value
 
     # Check amounts don't exceed desired
